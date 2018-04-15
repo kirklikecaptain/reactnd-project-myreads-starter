@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
-// import Book from 'Book'
 import { Link } from 'react-router-dom'
+
+import * as BooksAPI from './BooksAPI'
+
+import Book from './Book'
 
 class Search extends Component {
 	state = {
-		query: ''
+		query: '',
+		searchResults: [],
+		searchError: false
 	}
 
-	updateQuery = (query) => {
+	updateQuery = (queryTerm) => {
 		this.setState(() => ({
-			query: query.trim()
+			query: queryTerm
 		}))
 	}
 
 	clearQuery = () => {
 		this.updateQuery('')
+	}
+
+	bookSearch = () => {
+		if (this.state.query.length > 0) {
+			BooksAPI.search(this.state.query)
+			.then((newBooks) => (
+				newBooks.length > 0
+				? this.setState(() => ({	searchResults: newBooks, searchError: false }))
+				: this.setState(() => ({	searchResults: [], searchError: true	}))
+			))
+		}
 	}
 
 	render() {
@@ -26,14 +42,29 @@ class Search extends Component {
 					<div className="search-books-input-wrapper">
 						<input
 							type="text"
-							placeholder="Search by title or author"
+							placeholder="Find a new book by title or author"
+							value={this.state.query}
+							onChange={(event) => {
+								this.updateQuery(event.target.value)
+								this.bookSearch()
+							}}
 							/>
-
 					</div>
 				</div>
 				<div className="search-books-results">
 					<ol className="books-grid">
-						//put results here
+						{this.state.searchResults.map((book) => (
+							<li key={ book.id }>
+								<Book
+									book={ book }
+									books={ this.props.books }
+									changeShelf={ this.props.changeShelf }
+								/>
+							</li>
+						))}
+						{this.state.searchError === true && (
+							<div>Woops, no results were found!</div>
+						)}
 					</ol>
 				</div>
 			</div>

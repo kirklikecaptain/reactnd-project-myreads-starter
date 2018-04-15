@@ -5,7 +5,7 @@ class ShelfChanger extends Component {
 	render() {
 
 		//establish default value for new books
-		let currentShelf = 'currentlyReading'
+		let currentShelf = 'none'
 
 		//loop through books array for a match, if it's in the array, update dropdown to approprate option
 		for (let item of this.props.books) {
@@ -14,9 +14,7 @@ class ShelfChanger extends Component {
 				break
 			}
 		}
-
-
-
+		
 		return (
 			<div className="book-shelf-changer">
 				<select

@@ -36,23 +36,33 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-				<Route exact path='/' render={() => (
-					<div>
-						<Case
-							books={ this.state.books }
-							changeShelf={ this.changeShelf }
-						/>
-						<OpenSearch />
+				<div className="list-books">
+					<div className="list-books-title">
+						<h1>My Books</h1>
 					</div>
-				)} />
-				<Route exact path='/search' render={() => (
-					<div>
-						<Search
-							books={ this.state.books }
-						/>
-					</div>
-				)} />
-      </div>
+
+					<Route exact path='/' render={() => (
+						<div>
+							<Case
+								books={ this.state.books }
+								changeShelf={ this.changeShelf }
+							/>
+							<OpenSearch />
+						</div>
+					)} />
+
+					<Route exact path='/search' render={() => (
+						<div>
+							<Search
+								books={ this.state.books }
+								changeShelf={ this.changeShelf }
+							/>
+						</div>
+					)} />
+
+      	</div>
+
+			</div>
     )
   }
 }

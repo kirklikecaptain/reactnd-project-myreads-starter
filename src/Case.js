@@ -12,11 +12,7 @@ class BookCase extends Component {
 												{ type: 'read', title: 'Read'}]
 
 		return (
-			<div className="list-books">
-				<div className="list-books-title">
-					<h1>My Books</h1>
-				</div>
-
+			
 				<div className="list-books-content">
 					{shelfTypes.map( shelf => {
 						const placeBooks = this.props.books.filter( book => book.shelf === shelf.type )
@@ -33,7 +29,6 @@ class BookCase extends Component {
 						)
 					})}
 				</div>
-			</div>
 		)
 	}
 }
