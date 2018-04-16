@@ -15,7 +15,7 @@ class Search extends Component {
 		if (queryTerm.length === 0) {
 			this.setState({ searchResults: [], searchError: false})
 		}
-		
+
 		if (queryTerm) {
 			BooksAPI.search(queryTerm)
 				.then((newBooks) => (
@@ -63,7 +63,7 @@ class Search extends Component {
 							</li>
 						))}
 						{ searchError === true && (
-							<div>Woops, no results were found!</div>
+							<div style={{paddingTop: 50}}>Woops, no results were found! Try another search term.</div>
 						)}
 					</ol>
 				</div>
