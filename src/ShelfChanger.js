@@ -4,21 +4,23 @@ class ShelfChanger extends Component {
 
 	render() {
 
+		const { books, book, changeShelf } = this.props
+
 		//establish default value for new books
 		let currentShelf = 'none'
 
 		//loop through books array for a match, if it's in the array, update dropdown to approprate option
-		for (let item of this.props.books) {
-			if (item.id === this.props.book.id)  {
+		for (let item of books) {
+			if (item.id === book.id)  {
 				currentShelf = item.shelf
 				break
 			}
 		}
-		
+
 		return (
 			<div className="book-shelf-changer">
 				<select
-					onChange={(event) => this.props.changeShelf(this.props.book, event.target.value)}
+					onChange={(event) => changeShelf(this.props.book, event.target.value)}
           defaultValue={ currentShelf }>
 					<option value="none" disabled>Move to...</option>
 					<option value="currentlyReading">Currently Reading</option>

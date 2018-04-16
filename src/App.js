@@ -1,9 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Route } from 'react-router-dom'
-
 import * as BooksAPI from './BooksAPI'
-
 import Case from './Case'
 import OpenSearch from './OpenSearch'
 import Search from './Search'
@@ -61,7 +59,6 @@ class BooksApp extends React.Component {
 					)} />
 
       	</div>
-
 			</div>
     )
   }
