@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class ShelfChanger extends Component {
+class ShelfChanger extends PureComponent {
 
 	render() {
 
@@ -21,7 +21,7 @@ class ShelfChanger extends Component {
 			<div className="book-shelf-changer">
 				<select
 					onChange={(event) => changeShelf(this.props.book, event.target.value)}
-          defaultValue={ currentShelf }>
+          value={ currentShelf }>
 					<option value="none" disabled>Move to...</option>
 					<option value="currentlyReading">Currently Reading</option>
 					<option value="wantToRead">Want to Read</option>

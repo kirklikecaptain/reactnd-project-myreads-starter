@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 
-class OpenSearch extends Component {
+class OpenSearch extends PureComponent {
 
 	render() {
 		return (
